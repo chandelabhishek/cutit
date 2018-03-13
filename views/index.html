@@ -1,0 +1,30 @@
+<html>
+
+<head>
+  <title>CutIt</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
+<body>
+  <div>
+    <input id='url' type='text'>&nbsp;&nbsp;
+    <button id='cutIt'> Shorten This Url</button>
+  </div>
+  <br>
+  <br>
+  <div id='displayUrl'></div>
+  <script type='text/javascript'>
+    $(document).ready(function () {
+      $('#cutIt').click(function () {
+        var url = $('#url').val();
+        $.post('/cutit', { url }, function (res) {
+          $('#displayUrl').text('');
+          $('#url').val('');
+          $('#displayUrl').append('<a href=' + res + ' target="__blank">' + res + '</a>');
+        }).fail(function (err) { alert(err.responseText) });
+      });
+    });
+  </script>
+</body>
+
+</html>
