@@ -5,7 +5,14 @@ const constants = require('../constants');
 
 const router = express.Router();
 
-const { compressionSpace } = constants;
+/**
+ * 
+ * Encoding urls in the same we change base of Number here 
+ * 
+ * changing mysql id which in base 10 to Xbase62 as I am using [a-zA-z0-9]
+ */
+
+const { compressionSpace } = constants; 
 const base = compressionSpace.length;
 
 const compressUrlId = (id) => {

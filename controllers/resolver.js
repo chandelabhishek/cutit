@@ -3,6 +3,12 @@ const db = require('../models');
 
 const router = express.Router();
 
+/**
+ * 
+ * @param {*} encodedUrl url to be decoded
+ * 
+ * Logic is same as converting a binary number to Decimal but here we are converting Base62 to decimal 
+ */
 const resolveUrl = (encodedUrl) => {
   const splitUrl = encodedUrl.split('');
   return splitUrl.reduce((res, item, i) => {
@@ -33,7 +39,6 @@ router.get('*', async (req, res) => {
     console.log(error);
     res.status(500).send('Error While resolving the Url');
   }
-
 });
 
 module.exports = router;
